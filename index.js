@@ -42,14 +42,16 @@ const titulo4= document.querySelector('h4');
 const input1= document.querySelector('input');
 const btn= document.querySelector('button');
 
-
-
 btn.addEventListener('click', (e) =>{
-    const inpValue= input1.value;
-    console.log(pizzas.find((pizza) => pizza.id === inpValue));
     
-    const nombrePrecio = pizzas.forEach(pizza =>{
-        titulo2.innerText = pizza.nombre;
-        titulo4.innerText = pizza.precio;
-        });
-    }); 
+    const inpValue= input1.value;
+    pizzaFiltrada = pizzas.find((pizza) => pizza.id == inpValue)
+    if(!pizzaFiltrada){
+        alert('Ingresa un valor valido')
+    }else{
+        titulo2.innerText = (`Tu pizza es ${pizzaFiltrada.nombre}`);
+        titulo4.innerText = (`Cuesta $ ${pizzaFiltrada.precio}`);
+    };
+    e.preventDefault();
+})
+    
